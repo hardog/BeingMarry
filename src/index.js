@@ -118,7 +118,7 @@ var BM = window.BM = {
             x:0,
             y:0,
             emitNum: 40,
-            emitTime: 4,
+            emitTime: 3,
             emitterX: 0,
             emitterY: 0,
             particle:{
