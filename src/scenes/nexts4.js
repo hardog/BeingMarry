@@ -45,6 +45,7 @@ var nexts4 = bm.scenes.nexts4 = Hilo.Class.create({
             duration: 6000,
             ease: self.enterEase,
             onStart: function(){
+                bm.particle();
                 self.showText();
             },
             onComplete: function(){
@@ -68,6 +69,7 @@ var nexts4 = bm.scenes.nexts4 = Hilo.Class.create({
             },
             onComplete: function(){
                bm.stage.removeChild(self);
+               bm.particle();
             }
         });
     }

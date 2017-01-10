@@ -92,6 +92,9 @@ var nexts7 = bm.scenes.nexts7 = Hilo.Class.create({
             duration: 5000,
             delay: 1500,
             ease: self.enterEase,
+            // onStart: function(){
+            //     bm.particle();
+            // },
             onComplete: function(){
                 self.createSquare();
             }

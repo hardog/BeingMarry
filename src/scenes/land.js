@@ -43,6 +43,9 @@ var Land = bm.scenes.Land = Hilo.Class.create({
         }, {
             duration: 3000,
             ease: self.enterEase,
+            onStart: function(){
+                bm.particle();
+            },
             onComplete: function(){
                 self.createSquare();
             }

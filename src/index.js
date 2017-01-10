@@ -12,8 +12,9 @@ var BM = window.BM = {
 
     asset: null,
     scenes: {},
+    particleSystem: null,
 
-    pos: 3,
+    pos: 4,
 
     // scenes
     land: null,
@@ -108,17 +109,18 @@ var BM = window.BM = {
         this.pre = new BM.scenes.Land(this.asset.get('land'));
         this.stage.addChild(this.pre);
         this.pre.start();
-        this.particle();
     },
 
     particle: function(){
         var self = this;
         var img = document.getElementById('texture');
-        var particleSystem = new Hilo.ParticleSystem({
+        
+        self.particleSystem && self.stage.removeChild(self.particleSystem);
+        self.particleSystem = new Hilo.ParticleSystem({
             x:0,
             y:0,
             emitNum: 40,
-            emitTime: 3,
+            emitTime: 2,
             emitterX: 0,
             emitterY: 0,
             particle:{
@@ -142,39 +144,32 @@ var BM = window.BM = {
                 pivotY:.5
             }
         });
-        self.stage.addChild(particleSystem);
-        particleSystem.start();
+        self.stage.addChild(self.particleSystem);
+        self.particleSystem.start();
 
         self.ticker.addTick({
             tick:function(){
-                var rand = parseInt(Math.random()*6);
+                var rand = parseInt(Math.random()*4);
 
-                if(rand % self.pos === 0
-                    || rand % self.pos === 5){
-                    particleSystem.emitterX = self.stage.width / 2;
-                    particleSystem.emitterY = self.stage.height / 2;
-                }
-
-                if(rand % self.pos === 2){
-                    particleSystem.emitterX = -10;
-                    particleSystem.emitterY = self.stage.height / 2;
-                }
-
-                if(rand % self.pos === 3){
-                    particleSystem.emitterX = self.stage.width + 10;
-                    particleSystem.emitterY = self.stage.height / 2;
+                if(rand % self.pos === 0){
+                    self.particleSystem.emitterX = -10;
+                    self.particleSystem.emitterY = self.stage.height / 2;
                 }
 
                 if(rand % self.pos === 1){
-                    particleSystem.emitterX = self.stage.width / 2;
-                    particleSystem.emitterY = -10;
+                    self.particleSystem.emitterX = self.stage.width + 10;
+                    self.particleSystem.emitterY = self.stage.height / 2;
                 }
 
-                if(rand % self.pos === 4){
-                    particleSystem.emitterX = self.stage.width / 2;
-                    particleSystem.emitterY = self.stage.height + 10;
+                if(rand % self.pos === 2){
+                    self.particleSystem.emitterX = self.stage.width / 2;
+                    self.particleSystem.emitterY = -10;
                 }
 
+                if(rand % self.pos === 3){
+                    self.particleSystem.emitterX = self.stage.width / 2;
+                    self.particleSystem.emitterY = self.stage.height + 10;
+                }
             }
         });
     },
@@ -225,7 +220,6 @@ var BM = window.BM = {
         self['next' + nextId] = new BM.scenes['next' + nextId](self.asset.get(nextId));
         self.stage.addChild(self['next' + nextId]);
         self['next' + nextId].start();
-        self.particle();
     }
 };
 

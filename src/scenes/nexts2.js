@@ -53,6 +53,7 @@ var nexts2 = bm.scenes.nexts2 = Hilo.Class.create({
             delay: 100,
             ease: self.enterEase,
             onStart: function(){
+                bm.particle();
                 self.showText();
             },
             onComplete: function(){

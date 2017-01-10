@@ -49,6 +49,7 @@ var nexts6 = bm.scenes.nexts6 = Hilo.Class.create({
             duration: 5000,
             ease: self.enterEase,
             onStart: function(){
+                bm.particle();
                 setTimeout(function(){
                     self.showText();
                 }, 4000);
@@ -74,6 +75,7 @@ var nexts6 = bm.scenes.nexts6 = Hilo.Class.create({
             },
             onComplete: function(){
                bm.stage.removeChild(self);
+               bm.particle();
             }
         });
     }
