@@ -41,7 +41,6 @@ var Text = bm.Text = Hilo.Class.create({
         this.width = wh.w;
         this.height = wh.h;
         this.txt = text;
-        this.depth = 10;
         this.background = this.background;
         this.parseType(type);
     },
