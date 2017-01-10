@@ -87,7 +87,7 @@ var nexts2 = bm.scenes.nexts2 = Hilo.Class.create({
             delay: 1000,
             ease: self.outEase,
             onStart: function(){
-                self.text.hideAnimateRTOL();
+                bm.stage.addChild(self.text);
                 bm.loadNext('s3');
             },
             onComplete: function(){
